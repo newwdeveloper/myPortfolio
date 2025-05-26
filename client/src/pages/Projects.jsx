@@ -12,7 +12,7 @@ const Projects = () => {
       try {
         const res = await axios.get(
           // eslint-disable-next-line no-undef
-          `${import.meta.env.VITE_API_URL}/api/projects`
+          `${import.meta.env.VITE_API_URL}/projects`
         );
         setProjects(res.data.projects || []);
         console.log("Projects response:", res.data);

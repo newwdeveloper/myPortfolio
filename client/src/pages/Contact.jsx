@@ -30,7 +30,7 @@ const Contact = () => {
 
     setIsLoading(true); // Show loader
     try {
-      await axios.post(`${import.meta.env.VITE_API_URL}/api/contact`, formData);
+      await axios.post(`${import.meta.env.VITE_API_URL}/contact`, formData);
       toast.success("Message sent successfully!");
       setFormData({ name: "", email: "", message: "" });
     } catch (error) {

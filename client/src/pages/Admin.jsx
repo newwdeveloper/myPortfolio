@@ -19,7 +19,7 @@ const Admin = () => {
 
   useEffect(() => {
     axios
-      .get(`${import.meta.env.VITE_API_URL}/api/projects`)
+      .get(`${import.meta.env.VITE_API_URL}/projects`)
       .then((res) => setProjects(res.data.projects))
       .catch(() => toast.error("Failed to fetch projects"));
   }, []);
@@ -51,7 +51,7 @@ const Admin = () => {
     try {
       if (editId) {
         await axios.put(
-          `${import.meta.env.VITE_API_URL}/api/projects/${editId}`,
+          `${import.meta.env.VITE_API_URL}/projects/${editId}`,
           data,
           {
             headers: { "x-auth-token": token },
@@ -59,7 +59,7 @@ const Admin = () => {
         );
         toast.success("Project updated successfully!");
       } else {
-        await axios.post(`${import.meta.env.VITE_API_URL}/api/projects`, data, {
+        await axios.post(`${import.meta.env.VITE_API_URL}/projects`, data, {
           headers: { "x-auth-token": token },
         });
         toast.success("Project added successfully!");
@@ -73,9 +73,7 @@ const Admin = () => {
         image: null,
       });
       setEditId(null);
-      const res = await axios.get(
-        `${import.meta.env.VITE_API_URL}/api/projects`
-      );
+      const res = await axios.get(`${import.meta.env.VITE_API_URL}/projects`);
       setProjects(res.data.projects);
     } catch (error) {
       toast.error("Operation failed.");
@@ -95,7 +93,7 @@ const Admin = () => {
 
   const handleDelete = async (id) => {
     try {
-      await axios.delete(`${import.meta.env.VITE_API_URL}/api/projects/${id}`, {
+      await axios.delete(`${import.meta.env.VITE_API_URL}/projects/${id}`, {
         headers: { "x-auth-token": token },
       });
       setProjects(projects.filter((project) => project._id !== id));

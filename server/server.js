@@ -13,7 +13,11 @@ const PORT = process.env.PORT || 5000;
 const app = express();
 connectDB();
 
-app.use(cors());
+app.use(
+  cors({
+    origin: "https://my-portfolio-gules-one-55.vercel.app",
+  })
+);
 app.use(express.json());
 app.use(fileUpload({ useTempFiles: true }));
 app.use("/api/auth", authRoutes);
