@@ -35,6 +35,8 @@ router.post(
     if (username !== adminCredential.username) {
       return res.status(400).json({ message: "Invalid credentials" });
     }
+    console.log("Stored hashed password:", adminCredential.password);
+    console.log("Input password:", password);
 
     const isMatch = await bcrypt.compare(password, adminCredential.password);
     if (!isMatch) {

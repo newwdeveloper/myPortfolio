@@ -115,10 +115,11 @@ router.delete("/:id", auth, async (req, res) => {
     const publicId = project.image.split("/").pop().split(".")[0];
     await cloudinary.uploader.destroy(`portfolio/${publicId}`);
 
-    await project.remove();
+    await Project.deleteOne({ _id: req.params.id });
     res.json({ msg: "Project deleted" });
   } catch (error) {
     res.status(500).json({ msg: "Server error" });
+    console.log("delete project error", error);
   }
 });
 
