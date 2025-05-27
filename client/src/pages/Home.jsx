@@ -2,6 +2,7 @@ import React, { useEffect, useRef } from "react";
 // eslint-disable-next-line no-unused-vars
 import { motion } from "framer-motion";
 import Typed from "typed.js";
+import { Link } from "react-router-dom";
 
 const Home = () => {
   const typedRef = useRef(null);
@@ -47,12 +48,16 @@ const Home = () => {
             ></span>
           </motion.p>
           <motion.a
-            href="/projects"
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.9 }}
             className="bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700"
           >
-            View Projects
+            <Link
+              to="/projects"
+              className="bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 inline-block"
+            >
+              View Projects
+            </Link>
           </motion.a>
         </div>
       </motion.div>
